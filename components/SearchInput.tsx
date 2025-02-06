@@ -5,18 +5,26 @@ import * as React from "react";
 import { Input } from "./ui/input";
 import { Search } from "lucide-react";
 import { JSX } from "react";
+import { ChangeEvent, useState } from "react";
 
 export function SearchInput({
   suggestions,
   onSearch,
-  value,
-  handleSelect,
 }: {
   suggestions: string[];
   onSearch: (item: any) => void;
-  value: string;
-  handleSelect: (item: string) => void;
 }) {
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    onSearch(e.target.value);
+    setValue(e.target.value);
+  };
+    const [value, setValue] = useState<any>(suggestions[0])
+  
+    const handleSelect = (item: string) => {
+      setValue(item);
+    };
+
   const filteredItems = suggestions.filter(
     (item: any) =>
       value.trim() && item.toLowerCase().includes(value.toLowerCase())
@@ -63,7 +71,7 @@ export function SearchInput({
         </div>
         <Input
           value={value}
-          onChange={onSearch}
+          onChange={handleSearch}
           placeholder="Search..."
           className="pl-10"
         />
