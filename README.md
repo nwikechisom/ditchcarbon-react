@@ -38,7 +38,3 @@ __suggestions__: An array of strings to serve as the search suggestions.
 
 __onSearch__: A callback function that receives the selected query when a suggestion is clicked or when “Enter” is pressed.
 
-__value__: A string by default set to the first value in the array of suggestions.
-
-__handleSelect__: A callback function that receives the selected query when a suggestion is clicked
-
